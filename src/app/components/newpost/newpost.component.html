@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="jumbotron" style="width: 90%; margin-top: 10px !important; padding: 20px !important;">
+
+            <form (ngSubmit)="insertPost(PostData);" #formNewPost="ngForm">
+
+                <div class="modal-header text-center">
+                    <h3>Add New Post</h3>
+                    <h4 class="pull-right" [hidden]="!inserted">Record ID: <span class="badge badge-primary">{{PostData.id}}</span></h4>
+                </div>
+
+                <input type="hidden" value="{{PostData.userId}}"  name="userId" [(ngModel)]="PostData.userId"/>
+                
+                <div class="row">
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="form-group">
+                            <label for="recipient-name" class="col-form-label font-weight-bold">User ID:</label>
+                            <select class="form-control" value="{{PostData.userId}}" name="userId" [(ngModel)]="PostData.userId">
+                                <option name="user" value="1">1</option>
+                                <option name="user" value="2">2</option>
+                                <option name="user" value="3">3</option>
+                                <option name="user" value="4">4</option>
+                                <option name="user" value="5">5</option>
+                            </select>
+                          </div>
+                    </div>
+
+                    <div class="col-lg-8 col-md-8">
+                        <div class="form-group">
+                          <label for="recipient-name" class="col-form-label font-weight-bold">Title:</label>
+                          <input type="text" class="form-control" value="{{PostData.title}}" name="title" [(ngModel)]="PostData.title" required>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="message-text" class="col-form-label font-weight-bold">Body:</label>
+                    <textarea class="form-control" id="message-text" rows="5" name="body" [(ngModel)]="PostData.body" required>{{body}}</textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <div class="alert alert-primary text-center" style="width: 100%;"  [hidden]="!inserted">
+                      Post saved successful!.
+                      <br>
+                      <button type="button" class="btn btn-secondary btn-sm text-center" (click)="confirmIns()"><i class="fas fa-check"></i></button>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" [disabled]="!formNewPost.form.valid" [hidden]="inserted"><i class="fa fa-save"></i></button>
+                    <button type="button" class="btn btn-secondary" (click)="confirmIns()"[hidden]="inserted" ><i class="fas fa-sign-out-alt"></i>"</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
